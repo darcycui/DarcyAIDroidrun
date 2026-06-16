@@ -4,14 +4,8 @@ from mobilerun import MobileAgent, MobileConfig, LLMProfile
 async def main():
     # Use default configuration with built-in LLM profiles
     # 自定义配置 https://docs.mobilerun.ai/framework/sdk/droid-agent
-    llm_profile = LLMProfile(
-        provider="ZAI",
-        model="glm-5v-turbo ",
-        base_url= "https://open.bigmodel.cn/api/paas/v4/",
-        api_key_source="file"
-    )
 
-    config = MobileConfig(llm_profiles = {"ZAI": llm_profile})
+    config = MobileConfig.from_yaml("../config.yaml")
 
     # Create agent
     # LLMs are automatically loaded from config.llm_profiles
