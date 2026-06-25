@@ -1,16 +1,19 @@
 import asyncio
-from mobilerun import MobileAgent, MobileConfig, LLMProfile
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+from mobilerun import MobileAgent, MobileConfig
 
 async def main():
-    # Use default configuration with built-in LLM profiles
-    # 自定义配置 https://docs.mobilerun.ai/framework/sdk/droid-agent
+    os.chdir(Path(__file__).parent)
+    load_dotenv(".env")
 
-    config = MobileConfig.from_yaml("../config.yaml")
+    config = MobileConfig.from_yaml("config.yaml")
 
     # Create agent
     # LLMs are automatically loaded from config.llm_profiles
     agent = MobileAgent(
-        goal="Open Settings and check battery level",
+        goal="打开设置，查看手机电量剩余百分比",
         config=config,
     )
 

@@ -74,10 +74,8 @@ llm_profiles:
     provider: OpenAILike
     model: glm-5v-turbo
     temperature: 0.2
-    # api_key_source: env   # 默认就会去读 OPENAI_API_KEY
     kwargs:
       base_url: https://open.bigmodel.cn/api/paas/v4/
-      # 如果你想显式上限（可选）:
       max_tokens: 8192
 
   executor:
@@ -90,7 +88,7 @@ llm_profiles:
 
   fast_agent:
     provider: OpenAILike
-    model: glm-5-flash          # 更便宜更快，做点击/滑动决策够用
+    model: glm-5v-turbo
     temperature: 0.2
     kwargs:
       base_url: https://open.bigmodel.cn/api/paas/v4/
@@ -98,7 +96,7 @@ llm_profiles:
 
   app_opener:
     provider: OpenAILike
-    model: glm-5-flash
+    model: glm-5v-turbo
     temperature: 0.0
     kwargs:
       base_url: https://open.bigmodel.cn/api/paas/v4/
@@ -106,7 +104,7 @@ llm_profiles:
 
   structured_output:
     provider: OpenAILike
-    model: glm-5-flash
+    model: glm-4.7-flash
     temperature: 0.0
     kwargs:
       base_url: https://open.bigmodel.cn/api/paas/v4/
@@ -115,7 +113,8 @@ llm_profiles:
 # === Device Settings ===
 device:
   # Default device serial (null = auto-detect)
-  serial: RFCR3153BKL
+#  serial: RFCR3153BKL
+  serial: RFCW8014R4E
   # Optional backend override. null = platform default, visual-remote = compatible screenshot/action server
   control_backend: null
   # Device id for backends that expose multiple devices
@@ -189,7 +188,7 @@ tools:
 # === Credential Settings ===
 credentials:
   # Enable credential manager for secure secret storage
-  enabled: false
+  enabled: true
   # Path to credentials file (see config/credentials_example.yaml for format)
   file_path: config/credentials.yaml
 
