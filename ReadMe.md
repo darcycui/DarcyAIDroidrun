@@ -2,15 +2,23 @@
 ## 参考文档
 
 [官网文档 mobilerun](https://docs.mobilerun.ai/framework/quickstart)
+
 [Github仓库 mobilerun](https://github.com/droidrun/mobilerun)
+
 [Github仓库 mobilerun-portal](https://github.com/droidrun/mobilerun-portal)
+
 [Agent config_example.yaml](https://github.com/droidrun/mobilerun/blob/main/mobilerun/config_example.yaml)
+
 [ApiKey credentials_example.yaml](https://github.com/droidrun/mobilerun/blob/main/mobilerun/config/credentials_example.yaml)
+
 ## 是什么
+基于AI + Android无障碍服务实现的UI自动化项目
 
 ## 怎么使用
+运行脚本 main.py
 
 #### 安装 UV 软件
+项目使用uv管理依赖，请根据需要安装。
 
 ```shell
 # macOS/Linux
@@ -32,7 +40,7 @@ uv tool install mobilerun
 uv pip install mobilerun
 ```
 
-#### 安装Deepseek扩展： 
+#### 安装Deepseek扩展
 
 ```shell
 uv tool install 'mobilerun[anthropic,deepseek]'
@@ -104,32 +112,4 @@ mobilerun run "Find a contact named John and send him an email" --reasoning
 
 #### 用自然语言 通过脚本控制
 
-For complex automation or integration into your Python projects, create a script:  
-如果您需要进行复杂的自动化处理或将其集成到您的 Python 项目中，请创建一个脚本：
-
-```python
-import asyncio
-from mobilerun import MobileAgent, MobileConfig
-
-async def main():
-    # Use default configuration with built-in LLM profiles
-    config = MobileConfig()
-
-    # Create agent
-    # LLMs are automatically loaded from config.llm_profiles
-    agent = MobileAgent(
-        goal="Open Settings and check battery level",
-        config=config,
-    )
-
-    # Run agent
-    result = await agent.run()
-
-    # Check results (result is a ResultEvent object)
-    print(f"Success: {result.success}")
-    print(f"Reason: {result.reason}")
-    print(f"Steps: {result.steps}")
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
+直接运行脚本 main.py 即可。
